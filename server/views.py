@@ -23,6 +23,24 @@ def login():
     else:
         return {'status': 'error'}
 
+@app.post("/api/register")
+def register():
+    data = request.get_json()
+    user_name, user_pswd = data["user_name"], data["user_pswd"]
+
+    if not user_name or not user_pswd:
+        return {"status": "error", "message": "Invalid json."}
+
+    user: User = User.query.filter_by(user_name=user_name).first()
+    if user is not None:
+        new_user = User(user_name=user_name)
+        new_user.set_password(user_pswd)
+        db.session.add(new_user)
+        db.session.commit()
+        return {'status': 'success'}
+    else:
+        return {'status': 'error', "message": "User already exists."}
+
 @app.post("/api/logout")
 @login_required
 def logout():
