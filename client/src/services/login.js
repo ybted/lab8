@@ -1,10 +1,9 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/login'
+const baseUrl = 'http://172.18.198.218/api/login'
 
 const login = async credentials => {
   const response = await axios.post(baseUrl, credentials)
-  console.log(response)
-  return response.data
+  return response
 }
 // eslint-disable-next-line
 export default { login }

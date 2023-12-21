@@ -1,11 +1,19 @@
-const Music = ({music}) => (
-  <li> <br></br>
-    Name: {music.name} <br></br>
-    Author: {music.author} <br></br>
-    Link: {music.link} <br></br>
-    <img src={music.photo} alt="no photo" /> 
-  </li>
-)
+const Music = ({music, likeSubmit}) => {
+  return (
+    <li> 
+      <br></br>
+      Name: {music.musicname} <br></br>
+      Author: {music.authorname} <br></br>
+      Link: {music.musiclink} <br></br>
+      Likes: {music.likes} 
+      {/* <button onClick={likeSubmit}></button> */}
+      <br></br>
+      <img src={music.imagelink} alt="no photo" /> 
+   </li>
+  )
+}
+  
+
 
 
 export default Music
