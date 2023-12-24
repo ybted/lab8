@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import loginservices from '../services/login'
+import musicServices from '../services/music'
 import LoginForm from '../components/Form'
 import {
   BrowserRouter as Router,
@@ -9,6 +10,7 @@ import {
   Navigate
 } from 'react-router-dom'
 import RegisterPage  from './RegisterPage'
+import music from '../services/music'
 
 const LoginPage = () => {
   const [username, setUsername] = useState('')
@@ -23,9 +25,13 @@ const LoginPage = () => {
         username, password
       })
       console.log(user)
+      console.log(user.data.username)
       setUsername('')
       setPassword('')
-      navigate('/home')
+      if (user.data.username === "admin")
+        navigate('/check')
+      else 
+        navigate('/home')
     } catch(exception) {
       console.log('Wrong credentials')
     }

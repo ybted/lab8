@@ -1,13 +1,14 @@
 import Music from "./Music"
 
-const MusicList = ({musics}) => (
+const MusicList = ({musics, checkButton}) => (
   <div>
     <h2>Musics</h2>
       <ul>
       {musics.map(music => 
         <Music 
-          key={musics.indexOf(music)}
+          key={music.musicid}
           music={music}
+          checkButton={checkButton}
         />)}
       </ul>
   </div>

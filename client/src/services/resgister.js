@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://172.18.198.218/api/register'
+const baseUrl = '/api/register'
 
 const register = async credentials => {
   const response = await axios.post(baseUrl, credentials)
