@@ -1,16 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import loginservices from '../services/login'
-import musicServices from '../services/music'
-import LoginForm from '../components/Form'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate
-} from 'react-router-dom'
-import RegisterPage  from './RegisterPage'
-import music from '../services/music'
+import LoginForm from '../components/LoginForm'
+import styles from '../styles/LoginPage.module.css'
 
 const LoginPage = () => {
   const [username, setUsername] = useState('')
@@ -43,19 +35,14 @@ const LoginPage = () => {
   }
 
   return (
-    <div>
-      <h2>Login Page</h2>
-      <LoginForm 
+    <div className={styles.container}>
+      <LoginForm className={styles.LoginForm}
         handleSubmit={handleLogin}
         handleUsernameChange={({ target }) => setUsername(target.value)}
         handlePasswordChange={({ target }) => setPassword(target.value)}
         username={username}
         password={password}
-        name="login"
       />
-      <form onSubmit={register}>
-        <button id='register-button' type="submit">register</button>
-      </form>
     </div>
   )
 }

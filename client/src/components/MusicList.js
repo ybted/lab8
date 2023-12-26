@@ -1,17 +1,22 @@
 import Music from "./Music"
+import styles from '../styles/HomePage.module.css'
+const MusicList = ({musics, checkButton, handleDelete}) => {
 
-const MusicList = ({musics, checkButton}) => (
-  <div>
-    <h2>Musics</h2>
-      <ul>
-      {musics.map(music => 
-        <Music 
-          key={music.musicid}
-          music={music}
-          checkButton={checkButton}
-        />)}
-      </ul>
-  </div>
-)
+  return (
+    <div>
+      <h2>音乐</h2>
+        <div className={styles.card_container}>
+        {musics.map(music => 
+          <Music 
+            key={music.musicid}
+            music={music}
+            checkButton={checkButton}
+            handleDelete={handleDelete}
+          />)}
+        </div>
+    </div>
+  )
+}
+  
 
 export default MusicList

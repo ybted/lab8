@@ -3,7 +3,7 @@ import MusicList from '../components/MusicList'
 import { useState, useEffect } from "react"
 import musicServices from '../services/music'
 import { Navigate, useNavigate } from "react-router-dom"
-
+import styles from '../styles/HomePage.module.css'
 const HomePage = () => {
   const [musics, setMusics] = useState([])
 
@@ -41,15 +41,15 @@ const HomePage = () => {
 
 
   return ( 
-    <div>
-      <h2>about music platform</h2>
-      <button onClick={() => {navigate('/login')}}> logout </button> <br></br>
-      <button onClick={handleLike}> liked </button>
+    <div className={styles.container}>
+      <h1>123音乐平台</h1>
+      <button  onClick={() => {navigate('/login')}}> 登出 </button> <br></br>
+      <button onClick={handleLike}> 已收藏 </button>
       <MusicList musics={musics} checkButton="close" />
       <form onSubmit={create}>
-        <button id='register-button' type="submit">create new music</button>
+        <button id='register-button' type="submit">上传新音乐</button>
       </form>
-      <button onClick={back}>back</button>
+      <button onClick={back}>返回</button>
     </div>
   )
 }

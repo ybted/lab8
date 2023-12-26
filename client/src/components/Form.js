@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import styles from '../styles/LoginPage.module.css'
 
 const Form = ({
   handleSubmit,
@@ -9,6 +10,7 @@ const Form = ({
   name
 }) => (
   <form onSubmit={handleSubmit}>
+    <h2 className={styles.title}>{name}</h2>
     <div>
       username
       <input
@@ -29,7 +31,11 @@ const Form = ({
         onChange={handlePasswordChange}
       />
     </div>
-    <button id='login-button' type="submit">{name}</button>
+    <div>
+      <button id='login-button' type="submit">
+        {name}
+      </button>
+    </div>
   </form>
 )
 

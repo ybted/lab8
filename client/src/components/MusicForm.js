@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { Form } from 'react-router-dom'
-
+import styles from '../styles/LoginPage.module.css'
+import { useNavigate } from 'react-router-dom'
 const MusicForm = ({
   handleSubmit,
   handleMusicnameChange,
@@ -11,49 +12,58 @@ const MusicForm = ({
   authorname,
   imagelink,
   musiclink
-}) => (
-  <form onSubmit={handleSubmit}>
-    <div>
-      music name
-      <input 
-        type='text'
-        value={musicname}
-        name="Musicname"
-        onChange={handleMusicnameChange}
-        id="musicname"
-      />
-    </div>
-    <div>
-      author name
-      <input 
-        type='text'
-        value={authorname}
-        name="Authorname"
-        onChange={handleAuthornameChange}
-        id="authorname"
-      />
-    </div>
-    <div>
-      image link
-      <input 
-        type='text'
-        value={imagelink}
-        name="Imagelink"
-        onChange={handleImageChange}
-      />
-    </div>
-    <div>
-      music link
-      <input 
-        type="text"
-        value={musiclink}
-        name="Musiclink"
-        onChange={handleMusicLinkChange}
-      />
-    </div>
-    <button id='create-button' type='submit'>create</button>
-  </form>
-)
+}) => {
+  const navigate = useNavigate()
+  const back = (e) => {
+    e.preventDefault()
+    navigate('/home')
+  }
+  return (
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <h2 className={styles.title}>创建新的音乐</h2>
+      <div>
+        音乐名
+        <input 
+          type='text'
+          value={musicname}
+          name="Musicname"
+          onChange={handleMusicnameChange}
+          id="musicname"
+        />
+      </div>
+      <div>
+        作者名
+        <input 
+          type='text'
+          value={authorname}
+          name="Authorname"
+          onChange={handleAuthornameChange}
+          id="authorname"
+        />
+      </div>
+      <div>
+        音乐封面
+        <input 
+          type='text'
+          value={imagelink}
+          name="Imagelink"
+          onChange={handleImageChange}
+        />
+      </div>
+      <div>
+        音乐链接
+        <input 
+          type="text"
+          value={musiclink}
+          name="Musiclink"
+          onChange={handleMusicLinkChange}
+        />
+      </div>
+      <button id='create-button' type='submit'>提交</button>
+      <button onClick={back}>返回</button>
+    </form>
+  )
+}
 
 Form.prototype = {
   handleSubmit: PropTypes.func.isRequired,

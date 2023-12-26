@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import musicServices from '../services/music'
 import MusicForm from '../components/MusicForm'
-
+import styles from '../styles/LoginPage.module.css'
 
 const CreatePage = () => {
   const [musicname, setMusicname] = useState('')
@@ -29,10 +29,11 @@ const CreatePage = () => {
     }
   }
 
+  
+
   return (
-    <div>
-      <h2>Create Page</h2>
-      <MusicForm 
+    <div className={styles.container}>
+      <MusicForm className={styles.LoginForm}
         handleSubmit={handleCreate}
         handleMusicnameChange={({ target }) => setMusicname(target.value)}
         handleAuthornameChange={({ target }) => setAuthorname(target.value)}
